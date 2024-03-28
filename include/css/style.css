@@ -46,54 +46,54 @@ img {
 }
 
 form {
-width: 1000px;
+    width: 1000px;
 
-border: 3px solid rgb(177, 142, 142);
+    border: 3px solid rgb(177, 142, 142);
 
-padding: 20px;
+    padding: 20px;
 
-background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
 
-border-radius: 20px;
+    border-radius: 20px;
 
 }
 
 h2 {
 
-text-align: center;
+    text-align: center;
 
-margin-bottom: 40px;
+    margin-bottom: 40px;
 
 }
 
 input {
 
-display: block;
+    display: block;
 
-border: 2px solid #ccc;
+    border: 2px solid #ccc;
 
-width: 95%;
+    width: 95%;
 
-padding: 10px;
+    padding: 10px;
 
-margin: 10px auto;
+    margin: 10px auto;
 
-border-radius: 5px;
+    border-radius: 5px;
 
 }
+
 .error {
 
-background: #F2DEDE;
+    background: #F2DEDE;
 
-color: #0c0101;
+    color: #0c0101;
 
-padding: 10px;
+    padding: 10px;
 
-width: 95%;
+    width: 95%;
 
-border-radius: 5px;
+    border-radius: 5px;
 
-margin: 20px auto;
+    margin: 20px auto;
 
 }
-
