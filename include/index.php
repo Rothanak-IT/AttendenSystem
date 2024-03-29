@@ -10,10 +10,11 @@
     <style type="text/css">
     </style>
 </head>
-<body ng-controller="homeCtrl" style="background-image: url('img/skay.png')">
+<body style="background-image: url('img/skay.png')">
+    <div class="container-fluild">
     <div id="wrapper">
         <div id="menuhead" class="img1" style="background: #0099D3;">
-            <div width="50%" class="floatleft shadow "> <img class="image1" style="margin-top: 0.70%;" src="img/system.png" />
+            <div class="floatleft shadow "> <img class="image1" style="margin-top: 0.70%;" src="img/system.png" />
                 <h2 style="display: inline; font-weight: bold; margin: 10px; color: white;"> Student Management
                     System </h2>
             </div>
@@ -42,6 +43,7 @@
                 style="background: rgba(0, 0, 0, 0.3)"><br>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
+    </div>
     </div>
 </body>
 </html>
