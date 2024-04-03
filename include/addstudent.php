@@ -60,7 +60,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      <body>
 
           <header class="header">
-               <a href="">Admin Dashbord</a>
+               <a href="">Student Dashbord</a>
                <div class="logout">
                     <a href="logout.php" class="btn btn-primary">Logout</a>
                </div>
@@ -89,7 +89,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           </aside>
           <div>
                <div class="content">
-                    <h1>Admin Dashbord</h1>
+                    <h1>Student Dashbord</h1>
                </div>
           </div>
           <h1>
