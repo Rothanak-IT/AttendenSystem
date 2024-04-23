@@ -56,52 +56,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           margin-top: 5%;
           }
      </style>
-
      <body>
-
-          <header class="header">
-               <a href="">Courses Dashbord</a>
-               <div class="logout">
-                    <a href="logout.php" class="btn btn-primary">Logout</a>
-               </div>
-          </header>
-          <aside>
-               <ul>
-               <li>
-                         <a href="adminsion.php">Admission</a>
-                    </li>
-               <li>
-                         <a href="addstudent.php">Add Student</a>
-                    </li>
-                    <li>
-                         <a href="viewstudent.php">View Student</a>
-                    </li>
-                    <li>
-                         <a href="addteacher.php">Add Tescher</a>
-                    </li>
-                    <li>
-                         <a href="viewteacher.php">View Teacher</a>
-                    </li>
-                    <li>
-                         <a href="addcourses.php">Add Courses</a>
-                    </li>
-                    <li>
-                         <a href="viewcourses.php">View Courses</a>
-                    </li>
-               </ul>
-          </aside>
-          <div>
-               <div class="content">
-                    <h1>Courses Dashbord</h1>
-               </div>
-          </div>
-          <h1>
-               <?php echo $_SESSION['name']; ?>
-          </h1>
-
-
+          <?php include"student_sidebar.php"?>
      </body>
-
      </html>
      <?php
 } else {

@@ -1,3 +1,21 @@
+
+<?php
+
+$sname= "localhost";
+
+$unmae= "root";
+
+$password = "";
+
+$db_name = "student_db";
+
+$conn = mysqli_connect($sname, $unmae, $password, $db_name);
+$sql="SELECT * from admission";
+$result = mysqli_query($conn,$sql);
+if (!$conn) {
+    echo "Connection failed!";
+}
+?>
 <?php
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
@@ -60,7 +78,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      <body>
 
           <header class="header">
-               <a href="">Courses Dashbord</a>
+               <a href="">Adminsion</a>
                <div class="logout">
                     <a href="logout.php" class="btn btn-primary">Logout</a>
                </div>
@@ -68,7 +86,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           <aside>
                <ul>
                <li>
-                         <a href="adminsion.php">Admission</a>
+                         <a href="adminsion.php">Adminsion</a>
                     </li>
                <li>
                          <a href="addstudent.php">Add Student</a>
@@ -92,7 +110,48 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           </aside>
           <div>
                <div class="content">
-                    <h1>Courses Dashbord</h1>
+                    
+                    <center>
+                    <h1>Applied Adminsion</h1>
+                    <br><br>
+                    <table border='1px'>
+                         <tr>
+                              <th style=" padding: 20px; font-size: 15px; " >Name</th>
+                              <th style=" padding: 20px; font-size: 15px; ">Phone</th>
+                              <th style=" padding: 20px; font-size: 15px; ">Email</th>
+                              <th style=" padding: 20px; font-size: 15px; ">Message</th>
+                         </tr>
+                         <?php 
+                         while($info = $result->fetch_assoc())
+                         {
+                         ?>
+                         <tr>
+                              <td style=" padding: 20px; ">
+                              <?php
+                              echo"{$info['name']}";
+                              ?>
+                            </td>
+                              <td style=" padding: 20px; ">
+                              <?php
+                              echo"{$info['email']}";
+                              ?>
+                            </td>
+                              <td style=" padding: 20px; ">
+                              <?php
+                              echo"{$info['phone']}";
+                              ?>
+                            </td>
+                              <td style=" padding: 20px; ">
+                              <?php
+                              echo"{$info['message']}";
+                              ?>
+                            </td>
+                         </tr>
+                         <?php
+                         }
+                         ?>
+                    </table>
+                    </center>
                </div>
           </div>
           <h1>

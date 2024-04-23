@@ -22,13 +22,16 @@
                 </div>
                 <div class="floatright" style="margin-top: 10px;"> <img src="" width="200"></div>
             </div>
+
             <div class="row" style="width: 80%; margin: 0 auto;">
                 <h5 style="border: 1px solid gold; background: rgba(0,0,0,0.5); text-align: center; border-radius: 15px; padding: 10px; width: 100%; margin-top: 2%">
                     <img class="top" src="img/logosystem.png" width="50">
                     <b class="text"> IT Management System </b>
                 </h5>
             </div>
+
         </div>
+
         <div class="row">
             <form action="login.php" method="post" style="width: 50%; margin: 0 auto;">
                 <h2 style=" text-align: center;">Login System</h2>

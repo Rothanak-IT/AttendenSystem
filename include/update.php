@@ -1,46 +1,28 @@
 <?php
-
 $sname = "localhost";
-
 $unmae = "root";
-
 $password = "";
-
 $db_name = "student_db";
-
+$result = '';
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
-// $sql="SELECT * from admission";
-// $result = mysqli_query($conn,$sql);
-// if (!$conn) {
-//     echo "Connection failed!";
-// }
-if (isset($_POST["submit"])) {
-     $username = $_POST["name"];
-     $email = $_POST["email"];
-     $phone = $_POST["phone"];
-     $password = $_POST["password"];
-     $usertype = "student";
-     $result = "";
-     $check = "SELECT*FROM user WHERE username='$username'";
-     $check_user = mysqli_query($conn, $check);
-     $row_count = mysqli_num_rows($check_user);
-     if ($row_count == 1) {
-          echo "<script type='text/javascript'>alert('Username Already Exist. Try Another One');</script>";
-     } else {
-          $sql = "INSERT INTO user(username,email,phone,usertype,password) VALUES ('$username','$email','$phone','$usertype','$password')";
-          $result = mysqli_query($conn, $sql);
-     }
-     if ($result) {
-          echo "<script type='text/javascript'>alert('Data Upload Success');</script>";
-     } else {
-          echo "Data Upload Faild";
-     }
+$id=$_GET['student_id'];
+$sql = "SELECT * FROM user WHERE id='$id'";
+$result = mysqli_query($conn, $sql);
+$info=$result->fetch_assoc();
+if (isset($_POST["update"])) {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $password = $_POST["password"];
+    $query = "UPDATE user SET username='$name',email='$email',phone='$phone',password='$password' WHERE id='$id'";
+    $result2 = mysqli_query($conn,$query);
+    if($result2){
+        header("locatio:viewstudent.php");
+    }
 }
-
-
 ?>
-
 <?php
+error_reporting(0);
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      ?>
@@ -49,7 +31,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
      <head>
           <title>HOME</title>
-          <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+          
           <link rel="stylesheet" href="library/bootstrap.min.css" media="screen">
      </head>
      <style>
@@ -104,29 +86,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                margin-top: 5%;
           }
 
-          label {
-               display: inline-block;
-               text-align: right;
-               padding-right: 10px;
-               width: 100px;
-               padding-top: 10px;
-               padding-bottom: 10px;
-          }
-          .top{
-               margin-right: 260px;
-          }
-          .content{
-               background-color: skyblue;
-               width: 50%;
-               padding: 20px;
-               
-          }
+         label{
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            padding-top: 10px;
+            padding-bottom: 10px;
+         }
+         .dev_deg{
+            background-color: skyblue;
+            width: 400px;
+            padding-bottom: 70px;
+            padding-top: 70px;
+         }
      </style>
 
      <body>
 
           <header class="header">
-               <a href="">Student Dashbord</a>
+               <a href="">Update Student</a>
+
                <div class="logout">
                     <a href="logout.php" class="btn btn-primary">Logout</a>
                </div>
@@ -158,35 +137,35 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           </aside>
           <div>
                <div class="content">
-                    <br><br>
-                    <center>
-                         <h1>Add Student</h1>
-                         <br><br>
-                         <form action="#" method="POST" >
-                              <div>
-                                   <label>Username</label>
-                                   <input type="text" name="name">
-                                   <label for="">Email</label>
-                                   <input type="text" name="email">
-                              </div>
-                              <div>
-                                   <label for="">Phone</label>
-                                   <input  type="text" name="phone">
-                                   <label for="">Password</label>
-                                   <input type="text" name="password">
-                              </div>
-                              <div>
-                                   <input class="top btn btn-primary" type="submit" name="submit" value="Add Student">
-                              </div>
-                         </form>
+                <h3>Update Student</h3>
+                  <div class="dev_deg" >
+                    <form action="#" method="POST" >
+                       <div>
+                       <label>Username</label>
+                        <input type="text" name="name" value="<?php echo"{$info['username']}";?>" >
+                       </div>
+                       <div>
+                       <label>Email</label>
+                        <input type="text" name="email" value="<?php echo"{$info['email']}"?>">
+                       </div>
+                       <div>
+                       <label>Phone</label>
+                        <input type="text" name="phone" value="<?php echo"{$info['phone']}"?>">
+                       </div>
+                       <div>
+                       <label>Password</label>
+                        <input type="number" name="password" value="<?php echo"{$info['password']}"?>">
+                       </div>
+                       <div>
+                        <button class="btn btn-success" type="text" name="update">Update</button>
+                       </div>
+                    </form>
+                  </div>
                </div>
-               </center>
           </div>
           <h1>
                <?php echo $_SESSION['name']; ?>
           </h1>
-
-
      </body>
 
      </html>

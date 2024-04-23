@@ -68,6 +68,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           <aside>
                <ul>
                <li>
+                         <a href="adminsion.php">Adminsion</a>
+                    </li>
+               <li>
                          <a href="addstudent.php">Add Student</a>
                     </li>
                     <li>
@@ -90,8 +93,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           <div>
                <div class="content">
                     <h1>Admin Dashbord</h1>
+                    
                </div>
           </div>
+          
           <h1>
                <?php echo $_SESSION['name']; ?>
           </h1>

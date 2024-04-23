@@ -68,6 +68,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           <aside>
                <ul>
                <li>
+                         <a href="adminsion.php">Admission</a>
+                    </li>
+               <li>
                          <a href="addstudent.php">Add Student</a>
                     </li>
                     <li>
