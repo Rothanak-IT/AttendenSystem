@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-     ?>
+?>
      <!DOCTYPE html>
      <html>
 
@@ -22,15 +22,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                padding-left: 30px;
           }
 
-          a,a:hover {
-               text-decoration: none!important;
+          a,
+          a:hover {
+               text-decoration: none !important;
           }
 
           .logout {
                float: right;
                padding-right: 30px;
           }
-          ul{
+
+          ul {
                background-color: green;
                width: 16%;
                height: 100%;
@@ -38,22 +40,29 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                padding-top: 5%;
                text-align: center;
           }
-          ul li{
+
+          ul li {
                list-style: none;
                padding-bottom: 30px;
                font-size: 15px;
           }
-          ul li a{
+
+          ul li a {
                color: white;
                font-weight: bold;
           }
-          ul li a:hover{
+
+          ul li a:hover {
                color: skyblue;
                text-transform: none;
           }
-          .content{
-          margin-left: 20%;
-          margin-top: 5%;
+
+          .content {
+               margin-left: 20%;
+               margin-top: 5%;
+          }
+          .btn1{
+               width: 80%;
           }
      </style>
 
@@ -67,10 +76,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           </header>
           <aside>
                <ul>
-               <li>
+                    <li>
                          <a href="adminsion.php">Adminsion</a>
                     </li>
-               <li>
+                    <li>
                          <a href="addstudent.php">Add Student</a>
                     </li>
                     <li>
@@ -93,10 +102,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           <div>
                <div class="content">
                     <h1>Admin Dashbord</h1>
-                    
+                    <div class="row">
+                         <div class="d-grid gap-2 d-md-flex">
+                              <button style=" width: 50%" class="btn1 btn btn-primary me-md-2 p-5 m-3 " type="button">Button</button>
+                              <button class="btn1 btn btn-primary p-5 m-3 " type="button">Button</button>
+                              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                              <button class="btn1 btn btn-primary me-md-2 p-5 m-3 " type="button">Button</button>
+                              <button class="btn1 btn btn-primary p-5 m-3 " type="button">Button</button>
+                         </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                         
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+
+                    </div>
                </div>
           </div>
-          
+
           <h1>
                <?php echo $_SESSION['name']; ?>
           </h1>
@@ -105,7 +132,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      </body>
 
      </html>
-     <?php
+<?php
 } else {
      header("Location: index.php");
      exit();

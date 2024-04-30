@@ -77,7 +77,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                          <a href="viewstudent.php">View Student</a>
                     </li>
                     <li>
-                         <a href="addteacher.php">Add Tescher</a>
+                         <a href="addteacher.php">Add Teacher</a>
                     </li>
                     <li>
                          <a href="viewteacher.php">View Teacher</a>
