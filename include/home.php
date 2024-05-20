@@ -1,141 +1,96 @@
-<?php
-session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-?>
-     <!DOCTYPE html>
-     <html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+   
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <div class="container-fluid">
 
-     <head>
-          <title>HOME</title>
-          <link rel="stylesheet" type="text/css" href="css/style.css">
-          <link rel="stylesheet" href="library/bootstrap.min.css" media="screen">
-     </head>
-     <style>
-          * {
-               margin: 0;
-               padding: 0;
-          }
+        <?php include "logout.php" ?>
 
-          .header {
-               background-color: skyblue;
-               line-height: 70px;
-               padding-left: 30px;
-          }
+        <div class="row p-0 m-3">
+            <div class="col-sm-3" >
+                <div id="accordion">
 
-          a,
-          a:hover {
-               text-decoration: none !important;
-          }
-
-          .logout {
-               float: right;
-               padding-right: 30px;
-          }
-
-          ul {
-               background-color: green;
-               width: 16%;
-               height: 100%;
-               position: fixed;
-               padding-top: 5%;
-               text-align: center;
-          }
-
-          ul li {
-               list-style: none;
-               padding-bottom: 30px;
-               font-size: 15px;
-          }
-
-          ul li a {
-               color: white;
-               font-weight: bold;
-          }
-
-          ul li a:hover {
-               color: skyblue;
-               text-transform: none;
-          }
-
-          .content {
-               margin-left: 20%;
-               margin-top: 5%;
-          }
-          .btn1{
-               width: 80%;
-          }
-     </style>
-
-     <body>
-
-          <header class="header">
-               <a href="">Admin Dashbord</a>
-               <div class="logout">
-                    <a href="logout.php" class="btn btn-primary">Logout</a>
-               </div>
-          </header>
-          <aside>
-               <ul>
-                    <li>
-                         <a href="adminsion.php">Adminsion</a>
-                    </li>
-                    <li>
-                         <a href="addstudent.php">Add Student</a>
-                    </li>
-                    <li>
-                         <a href="viewstudent.php">View Student</a>
-                    </li>
-                    <li>
-                         <a href="addteacher.php">Add Tescher</a>
-                    </li>
-                    <li>
-                         <a href="viewteacher.php">View Teacher</a>
-                    </li>
-                    <li>
-                         <a href="addcourses.php">Add Courses</a>
-                    </li>
-                    <li>
-                         <a href="viewcourses.php">View Courses</a>
-                    </li>
-               </ul>
-          </aside>
-          <div>
-               <div class="content">
-                    <h1>Admin Dashbord</h1>
-                    <div class="row">
-                         <div class="d-grid gap-2 d-md-flex">
-                              <button style=" width: 50%" class="btn1 btn btn-primary me-md-2 p-5 m-3 " type="button">Button</button>
-                              <button class="btn1 btn btn-primary p-5 m-3 " type="button">Button</button>
-                              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                              <button class="btn1 btn btn-primary me-md-2 p-5 m-3 " type="button">Button</button>
-                              <button class="btn1 btn btn-primary p-5 m-3 " type="button">Button</button>
-                         </div>
-                         </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="btn text-primary" data-bs-toggle="collapse" href="#collapseOne">
+                                Student Management
+                            </a>
+                        </div>
+                        <?php include "list_conten.php"?>
                     </div>
-                    <div class="row">
-                         
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="btn text-info" data-bs-toggle="collapse" href="#collapseTwo">
+                                Scoring Mangement
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                    <li class="list-group-item btn btn-primary text-primary">Score Students</li>
+                            </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
 
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="btn text-success" data-bs-toggle="collapse" href="#collapseThree">
+                                Student Absent
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item btn btn-primary text-primary">Absent Student</li>
+                            </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
 
+                </div>
+            </div>
+            <div class="col-sm" style="background-color: #e6ffff;">
+                <div class="row">
+                    <h4 class="text-center text-danger"></h4>
+                    <div class="content">
+                        <div class="col-sm " style="background-color: #e6ffff; ">
+                            <h4 class="text-center text-danger mt-3">Admin Dashboard</h4>
+                            <div class="row">
+                                <div class="col rounded bg-success p-5  text-white m-2 btn " style="width: 500px; height: 100px; " >
+                                    <h5 ></h5>
+                                </div>
+                                <div class="col rounded bg-success p-5  text-white m-2 btn" style="width: 500px; height: 100px; " >
+                                    <h5></h5>
+                                </div>
+                                <div class="col rounded bg-success p-5 text-white m-2 btn" style="width: 500px; height: 100px; " >
+                                    <h5></h5>
+                                </div>
+                                <div class="col rounded bg-success p-5 text-white m-2 btn" style="width: 500px; height: 100px; " >
+                                    <h5></h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-               </div>
-          </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-          <h1>
-               <?php echo $_SESSION['name']; ?>
-          </h1>
-
-
-     </body>
-
-     </html>
-<?php
-} else {
-     header("Location: index.php");
-     exit();
-}
-
-?>
+</html>

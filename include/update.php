@@ -10,14 +10,26 @@ $sql = "SELECT * FROM user WHERE id='$id'";
 $result = mysqli_query($conn, $sql);
 $info=$result->fetch_assoc();
 if (isset($_POST["update"])) {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $password = $_POST["password"];
-    $query = "UPDATE user SET username='$name',email='$email',phone='$phone',password='$password' WHERE id='$id'";
+     $username = $_POST["username"];
+     $email = $_POST["email"];
+     $phone = $_POST["phone"];
+     $pass = $_POST["pass"];
+     $gender = $_POST['gender'];
+     $age = $_POST['age'];
+     $dat = $_POST['dat'];
+     $birth = $_POST['birth'];
+     $addres = $_POST['addres'];
+     $skill = $_POST['skill'];
+     $grade = $_POST['grade'];
+    $shift = $_POST['shift'];
+     $usertype = "student";
+    $query = "UPDATE user SET username='$username',email='$email',phone='$phone',pass='$pass' gender='$gender',age='$age',dat='$dat',birth='$birth',addres='$addres',skill='$skill',grade='$grade',shift='$shift' WHERE id='$id'";
     $result2 = mysqli_query($conn,$query);
     if($result2){
-        header("locatio:viewstudent.php");
+        header("locatio: update.php");
+        exit();
+    }else{
+     
     }
 }
 ?>
@@ -25,116 +37,21 @@ if (isset($_POST["update"])) {
 error_reporting(0);
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-     ?>
+     header("Location: index.php");
+     exit();
+}
+
+?>
      <!DOCTYPE html>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
      <html>
-
-     <head>
-          <title>HOME</title>
-          
-          <link rel="stylesheet" href="library/bootstrap.min.css" media="screen">
-     </head>
-     <style>
-          * {
-               margin: 0;
-               padding: 0;
-          }
-
-          .header {
-               background-color: skyblue;
-               line-height: 70px;
-               padding-left: 30px;
-          }
-
-          a,
-          a:hover {
-               text-decoration: none !important;
-          }
-
-          .logout {
-               float: right;
-               padding-right: 30px;
-          }
-
-          ul {
-               background-color: green;
-               width: 16%;
-               height: 100%;
-               position: fixed;
-               padding-top: 5%;
-               text-align: center;
-          }
-
-          ul li {
-               list-style: none;
-               padding-bottom: 30px;
-               font-size: 15px;
-          }
-
-          ul li a {
-               color: white;
-               font-weight: bold;
-          }
-
-          ul li a:hover {
-               color: skyblue;
-               text-transform: none;
-          }
-
-          .content {
-               margin-left: 20%;
-               margin-top: 5%;
-          }
-
-         label{
-            display: inline-block;
-            width: 100px;
-            text-align: right;
-            padding-top: 10px;
-            padding-bottom: 10px;
-         }
-         .dev_deg{
-            background-color: skyblue;
-            width: 400px;
-            padding-bottom: 70px;
-            padding-top: 70px;
-         }
-     </style>
-
      <body>
 
           <header class="header">
                <a href="">Update Student</a>
-
-               <div class="logout">
-                    <a href="logout.php" class="btn btn-primary">Logout</a>
-               </div>
           </header>
-          <aside>
-               <ul>
-               <li>
-                         <a href="adminsion.php">Admission</a>
-                    </li>
-                    <li>
-                         <a href="addstudent.php">Add Student</a>
-                    </li>
-                    <li>
-                         <a href="viewstudent.php">View Student</a>
-                    </li>
-                    <li>
-                         <a href="addteacher.php">Add Tescher</a>
-                    </li>
-                    <li>
-                         <a href="viewteacher.php">View Teacher</a>
-                    </li>
-                    <li>
-                         <a href="addcourses.php">Add Courses</a>
-                    </li>
-                    <li>
-                         <a href="viewcourses.php">View Courses</a>
-                    </li>
-               </ul>
-          </aside>
+         
           <div>
                <div class="content">
                 <h3>Update Student</h3>
@@ -142,7 +59,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                     <form action="#" method="POST" >
                        <div>
                        <label>Username</label>
-                        <input type="text" name="name" value="<?php echo"{$info['username']}";?>" >
+                        <input type="text" name="username" value="<?php echo"{$info['username']}";?>" >
                        </div>
                        <div>
                        <label>Email</label>
@@ -154,9 +71,40 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                        </div>
                        <div>
                        <label>Password</label>
-                        <input type="number" name="password" value="<?php echo"{$info['password']}"?>">
+                        <input type="number" name="pass" value="<?php echo"{$info['pass']}"?>">
                        </div>
                        <div>
+                       <label>Gender</label>
+                        <input type="text" name="gender" value="<?php echo"{$info['gender']}"?>">
+                       </div>
+                       <div>
+                       <label>Age</label>
+                        <input type="number" name="age" value="<?php echo"{$info['age']}"?>">
+                       </div>
+                       <div>
+                       <label>Date of Bird</label>
+                        <input type="date" name="dat" value="<?php echo"{$info['dat']}"?>">
+                       </div>
+                       <div>
+                       <label>Place of birth</label>
+                        <input type="text" name="birth" value="<?php echo"{$info['birth']}"?>">
+                       </div>
+                       <div>
+                       <label>Address</label>
+                        <input type="text" name="addres" value="<?php echo"{$info['addres']}"?>">
+                       </div>
+                       <div>
+                       <label>Skill</label>
+                        <input type="text" name="skill" value="<?php echo"{$info['skill']}"?>">
+                       </div>
+                       <div>
+                       <label>Grade</label>
+                        <input type="text" name="grade" value="<?php echo"{$info['grade']}"?>">
+                       </div>
+                       <div>
+                       <label>Shift</label>
+                        <input type="text" name="shift" value="<?php echo"{$info['shift']}"?>">
+                       </div>
                         <button class="btn btn-success" type="text" name="update">Update</button>
                        </div>
                     </form>
@@ -169,10 +117,4 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      </body>
 
      </html>
-     <?php
-} else {
-     header("Location: index.php");
-     exit();
-}
-
-?>
+    

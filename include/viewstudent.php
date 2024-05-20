@@ -12,115 +12,42 @@ $result = mysqli_query($conn, $sql);
 error_reporting(0);
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
-     ?>
+     header("Location: update.php");
+     exit();
+
+}
+
+?>
      <!DOCTYPE html>
      <html>
-
      <head>
           <title>HOME</title>
           <link rel="stylesheet" type="text/css" href="css/style.css">
-          <link rel="stylesheet" href="library/bootstrap.min.css" media="screen">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
      </head>
-     <style>
-          * {
-               margin: 0;
-               padding: 0;
+    <style>
+        .table_th {
+               padding: 5px;
+               font-size: 11px;
           }
-
-          .header {
-               background-color: skyblue;
-               line-height: 70px;
-               padding-left: 30px;
-          }
-
-          a,
-          a:hover {
-               text-decoration: none !important;
-          }
-
-          .logout {
-               float: right;
-               padding-right: 30px;
-          }
-
-          ul {
-               background-color: green;
-               width: 16%;
-               height: 100%;
-               position: fixed;
-               padding-top: 5%;
-               text-align: center;
-          }
-
-          ul li {
-               list-style: none;
-               padding-bottom: 30px;
-               font-size: 15px;
-          }
-
-          ul li a {
-               color: white;
-               font-weight: bold;
-          }
-
-          ul li a:hover {
-               color: skyblue;
-               text-transform: none;
-          }
-
-          .content {
-               margin-left: 20%;
-               margin-top: 5%;
-          }
-
-          .table_th {
-               padding: 20px;
-               font-size: 20px;
-          }
-
           .table_td {
-               padding: 20px;
-               background-color: skyblue;
+               padding: 3px;
+               background-color: gray;
           }
-     </style>
+          label{
+            margin-right: 60px;
+          }
+          th{
+            background-color: white;
+          }
+    </style>
 
      <body>
 
-          <header class="header">
-               <a href="">View Student Dashbord</a>
-
-               <div class="logout">
-                    <a href="logout.php" class="btn btn-primary">Logout</a>
-               </div>
-          </header>
-          <aside>
-               <ul>
-               <li>
-                         <a href="adminsion.php">Admission</a>
-                    </li>
-                    <li>
-                         <a href="addstudent.php">Add Student</a>
-                    </li>
-                    <li>
-                         <a href="viewstudent.php">View Student</a>
-                    </li>
-                    <li>
-                         <a href="addteacher.php">Add Tescher</a>
-                    </li>
-                    <li>
-                         <a href="viewteacher.php">View Teacher</a>
-                    </li>
-                    <li>
-                         <a href="addcourses.php">Add Courses</a>
-                    </li>
-                    <li>
-                         <a href="viewcourses.php">View Courses</a>
-                    </li>
-               </ul>
-          </aside>
           <div>
                <div class="content">
-                    <h3>View Student Dashbord</h3>
+                    <h4>View Student</h4>
                     <?php
                     if ($_SESSION['message']) {
                          echo $_SESSION['message'];
@@ -133,6 +60,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                               <th class="table_th">Email</th>
                               <th class="table_th">Phone</th>
                               <th class="table_th">Password</th>
+                              <th class="table_th">Gender</th>
+                              <th class="table_th">Age</th>
+                              <th class="table_th">Date</th>
+                              <th class="table_th">Birth</th>
+                              <th class="table_th">Address</th>
+                              <th class="table_th">Skill</th>
+                              <th class="table_th">Grade</th>
+                              <th class="table_th">Shift</th>
                               <th class="table_th">Delete</th>
                               <th class="table_th">Update</th>
                          </tr>
@@ -150,7 +85,32 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                         <?php echo "{$info['phone']}" ?>
                                    </td>
                                    <td class="table_td">
-                                        <?php echo "{$info['password']}" ?>
+                                        <?php echo "{$info['pass']}" ?>
+                                   </td>
+                                   <td class="table_td">
+                                        <?php echo "{$info['gender']}" ?>
+                                   </td>
+                                   <td class="table_td">
+                                        <?php echo "{$info['age']}" ?>
+                                   </td>
+                                   <td class="table_td">
+                                        <?php echo "{$info['dat']}" ?>
+                                   </td>
+                                   <td class="table_td">
+                                        <?php echo "{$info['birth']}" ?>
+                                   </td>
+                                   <td class="table_td">
+                                        <?php echo "{$info['addres']}" ?>
+                                   </td>
+                                   
+                                   <td class="table_td">
+                                        <?php echo "{$info['skill']}" ?>
+                                   </td>
+                                   <td class="table_td">
+                                        <?php echo "{$info['grade']}" ?>
+                                   </td>
+                                   <td class="table_td">
+                                        <?php echo "{$info['shift']}" ?>
                                    </td>
                                    <td class="table_td">
                                         <?php echo "<a onClick=\" javascript:return confirm('Are Your Sure to Delete This')\" href='delete.php?student_id={$info['id']}' class='btn btn-danger'>Delete</a>" ?>
@@ -159,11 +119,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                         <?php echo "<a href='update.php?student_id={$info['id']}' class='btn btn-success'>Update</a>" ?>
                                    </td>
                               </tr>
+                              <tr>
+                                   
+                              </tr>
                          <?php
                          }
                          ?>
                     </table>
                </div>
+               
           </div>
           <h1>
                <?php echo $_SESSION['name']; ?>
@@ -171,10 +135,4 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      </body>
 
      </html>
-     <?php
-} else {
-     header("Location: index.php");
-     exit();
-}
-
-?>
+    
